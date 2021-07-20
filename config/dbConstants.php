@@ -1,6 +1,5 @@
 <?php
-define('HOST', 'localhost');
+define('HOST', 'localhost:8889');
 define('DB', 'employeedb');
 define('USER', 'root');
-define('PASSWORD', '');
-?>
+define('PASSWORD', '123456');

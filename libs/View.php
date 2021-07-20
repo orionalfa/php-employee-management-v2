@@ -1,7 +1,6 @@
 <?php
 class View{
     function __construct(){
-        if(EXECUTION_FLOW)
         echo '<p>Base view class</p>';
     }
 
@@ -9,4 +8,3 @@ class View{
         require VIEWS . '/' . $name . '.php';
     }
 }
-?>

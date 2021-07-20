@@ -6,10 +6,10 @@
 DROP DATABASE IF EXISTS employeedb;
 CREATE DATABASE employeedb;
 USE employeedb;
-
 --
 -- Tables creation
 --
+
 
 CREATE TABLE `employees` (
   `id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -31,8 +31,6 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (
-
-
   `name`,
   `lastName`,
   `email`,
@@ -44,15 +42,65 @@ INSERT INTO `employees` (
   `postalCode`,
   `phoneNumber`
 ) 
-
 VALUES
-("Rack",
-"Lei",
-"jackon@network.com",
-"M",
-"San Jone",
-"126",
-"Canada",
-"24",
-"394221",
-"738362762");
+(
+  "Jean",
+  "Hoover",
+  "jhover@network.com",
+  "M",
+  "Syosset",
+  "4388 Southern Street",
+  "NY",
+  24,
+  "11791",
+  "914537837"),
+(
+  "Dwight",
+  "Martinez",
+  "dwightm@network.com",
+  "M",
+  "Simsbury",
+  "3703 Copperhead Road",
+  "CT",
+  35,
+  "06070",
+  "203412764"
+),
+(
+  "Lisa",
+  "Murphy",
+  "lisamurphy01@mail.com",
+  "F",
+  "Hazen",
+  "601 Coal Street",
+  "PA",
+  29,
+  "15825",
+  "215818225"
+),
+(
+  "Tara",
+  "Jones",
+  "taradjones@mail.com",
+  "F",
+  "Muskegon",
+  "1499 Wetzel Lane",
+  "MI",
+  40,
+  "49470",
+  "248877375"
+),
+(
+  "James",
+  "Gunter",
+  "jamescunter@email.net",
+  "M",
+  "Hopkins",
+  "2997 Sycamore Fork Road",
+  "MN",
+  33,
+  "55343",
+  "952907487"
+);
+
+

@@ -1,9 +1,10 @@
 <?php
 class Controller{
     function __construct(){
-        if(EXECUTION_FLOW)
+        // if(EXECUTION_FLOW)
         echo '<p>Base controller class</p>';
         $this->view = new View();
+        $this->loadModel(get_class($this) . "Model");
     }
 
     function loadModel($model){
@@ -18,4 +19,3 @@ class Controller{
         }
     }
 }
-?>
