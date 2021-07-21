@@ -5,8 +5,8 @@ class Router
 {
     function __construct()
     {
-        if (EXECUTION_FLOW)
-            echo "<p>Router Loaded</p>";
+        // if (EXECUTION_FLOW)
+        //     echo "<p>Router Loaded</p>";
         //Position [0] it's for controllers
         //Position [1] it's for methods
 
