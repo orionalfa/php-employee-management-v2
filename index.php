@@ -7,6 +7,10 @@ require_once("config/baseConstants.php");
 
 // echo "<p>". BASE_PATH . "</p>";
 
-require_once("libs/Router.php");
+// require_once(LIBS . "/View.php");
+
+require_once(LIBS . "/Controller.php");
+require_once(LIBS . "/Model.php");
+require_once(LIBS . "/Router.php");
 
 $router = new Router();

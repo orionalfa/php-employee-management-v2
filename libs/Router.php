@@ -18,14 +18,23 @@ class Router
 
         var_dump($url);
 
-        // if (empty($url[0]) || $url[0] == "main") {
-        //     $fileController = CONTROLLERS . '/' . 'MainController.php';
-        //     require_once($fileController);
-        //     $controller = new MainController();
-        //     $controller->loadModel('main');
-        //     $controller->render();
-        //     return false;
-        // }
+        if (empty($url[0]) || $url[0] == "login") {
+            $fileController = CONTROLLERS . '/' . 'LoginController.php';
+            require_once($fileController);
+            $controller = new LoginController();
+            $controller->loadModel('Login');
+            // $controller->render();
+            // return false;
+        }elseif ($url[0] == "employees") {
+            $fileController = CONTROLLERS . '/' . 'EmployeesController.php';
+            require_once($fileController);
+            $controller = new EmployeesController();
+            $controller->loadModel('Employees');
+
+        }
+        else{
+            echo "404 Wrong resource";
+        }
     }
 
 }
