@@ -22,9 +22,16 @@ CREATE TABLE `employees` (
   `state` varchar(20) NOT NULL,
   `age` INT(2) NOT NULL,
   `postalCode` varchar(5) NOT NULL,
-  `phoneNumber` varchar(9) NOT NULL
+  `phoneNumber` varchar(9) NOT NULL,
 );
 
+
+CREATE TABLE users (
+    user_no      INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_name    VARCHAR(40) NOT NULL UNIQUE,
+    user_password   VARCHAR(200) NOT NULL,
+    user_email   VARCHAR(40) NOT NULL
+);
 
 --
 -- Insert data for "content" table
@@ -103,4 +110,7 @@ VALUES
   "952907487"
 );
 
+
+INSERT INTO users (user_name, user_password, user_email) VALUES
+('admin', '$2y$10$nuh1LEwFt7Q2/wz9/CmTJO91stTBS4cRjiJYBY3sVCARnllI.wzBC', 'admin@assemblerschool.com');
 

@@ -42,10 +42,39 @@ class EmployeeView extends Employees
     }
 }
 
+// class Users extends Database
+// {
+//     protected function getUsers()
+//     {
+//         $sql = "SELECT * FROM users";
+
+//         $stmt = $this->connect()->prepare($sql);
+//         $stmt->execute();
+
+//         $results = $stmt->fetchAll();
+//         return $results;
+//     }
+// }
+
+// class UsersView extends Users
+// {
+//     public function showUsers()
+//     {
+//         $results = $this->getUsers();
+//         echo "<pre>";
+//         foreach ($results as $result) {
+//             echo $result;
+//         };
+
+//         echo "</pre>";
+//     }
+// }
 
 $testObj = new EmployeeView();
+// $testUsersObj = new UsersView();
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
