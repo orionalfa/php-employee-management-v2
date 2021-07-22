@@ -11,6 +11,8 @@ class EmployeesController extends Controller
 
         echo '<p>Employees Controller</p>';
     }
-
-
+    public function render()
+    {
+        $this->view->render('dashboard/index');
+    }
 }
