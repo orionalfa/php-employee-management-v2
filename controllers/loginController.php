@@ -12,8 +12,5 @@ class LoginController extends Controller
         echo '<p>Login Controller</p>';
     }
 
-    public function render()
-    {
-        $this->view->render('login/index');
-    }
+
 }
