@@ -25,7 +25,7 @@ class Users extends Database
 
     public function getByName($userName)
     {
-        $sql = "SELECT * FROM users WHERE user_name = $userName";
+        $sql = "SELECT * FROM users WHERE user_name = '$userName'";
 
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();

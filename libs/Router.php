@@ -25,6 +25,8 @@ class Router
             require_once($fileController);
             $controller = new LoginController();
             $controller->loadModel('Login');
+            $controller->getUserByName('Erick Noiztbander');
+
             // $controller->render();
             // return false;
         }elseif ($url[0] == "employees") {

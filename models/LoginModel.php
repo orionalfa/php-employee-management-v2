@@ -13,7 +13,7 @@ class LoginModel extends Model
 
     }
 
-    public function userLogin($userName)
+    public function getUserByName($userName)
     {
         $usersDb = new Users;
         $targetUser = $usersDb->getByName("$userName");
