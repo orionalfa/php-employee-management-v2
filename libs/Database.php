@@ -15,6 +15,8 @@ class Database
         $this->db = DB;
         $this->user = USER;
         $this->password = PASSWORD;
+        if(FLOW_CONTROL)
+            echo "Database Class<br>";
     }
 
     function connect()

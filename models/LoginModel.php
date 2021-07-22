@@ -1,6 +1,6 @@
 <?php
 
-// include_once ENTITIES . '/Content.php';
+include_once ENTITIES . '/Users.php';
 
 class LoginModel extends Model
 {
@@ -10,6 +10,15 @@ class LoginModel extends Model
         parent::__construct();
 
         echo '<p>Login model</p>';
+
+    }
+
+    public function userLogin($userName)
+    {
+        $usersDb = new Users;
+        $targetUser = $usersDb->getByName("$userName");
+        var_dump($targetUser);
+
     }
 
 
