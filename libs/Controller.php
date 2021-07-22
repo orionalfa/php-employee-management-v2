@@ -1,18 +1,21 @@
 <?php
-class Controller{
-    function __construct(){
+class Controller
+{
+    function __construct()
+    {
+        echo '<p>Base controller class</p>';
+        $this->view = new View();
+        // if(EXECUTION_FLOW)
         echo '<p>Base controller class</p>';
         // $this->view = new View();
-        // if(EXECUTION_FLOW)
-        // echo '<p>Base controller class</p>';
-        // $this->view = new View();
-        // $this->loadModel(get_class($this) . "Model");
+        $this->loadModel(get_class($this) . "Model");
     }
 
-    function loadModel($model){
+    function loadModel($model)
+    {
         $url = MODELS . '/' . $model . 'Model.php';
 
-        if(file_exists($url)){
+        if (file_exists($url)) {
             require $url;
 
             $modelName = $model . 'Model';
@@ -20,8 +23,6 @@ class Controller{
             $this->model = new $modelName();
         }
     }
-
-
 }
 
 // class Controller{
