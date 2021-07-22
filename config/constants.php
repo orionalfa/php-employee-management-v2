@@ -15,16 +15,16 @@ define("MODELS", BASE_PATH . '/models');
 define("ENTITIES", MODELS . '/entities');
 
 //HTML
-define('HTML', BASE_URL . "/assets/html/");
+define('HTML', BASE_URL . "assets/html/");
 
 //CSS
 define('CSS', BASE_URL . 'assets/css/');
 
 //JS
-define('JS', BASE_URL . '/assets/js/');
+define('JS', BASE_URL . 'assets/js/');
 
 //IMAGES
-define('IMAGES', BASE_URL . 'assets/images');
+define('IMAGES', BASE_URL . 'assets/images/');
 
 
 //NODE_MODULES
