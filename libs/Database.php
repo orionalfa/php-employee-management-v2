@@ -1,5 +1,5 @@
 <?php
-
+require_once "config/dbConstants.php";
 class Database
 {
     private $host;
@@ -7,6 +7,7 @@ class Database
     private $user;
     private $password;
     private $charset;
+    private $error;
 
     public function __construct()
     {
@@ -14,7 +15,6 @@ class Database
         $this->db = DB;
         $this->user = USER;
         $this->password = PASSWORD;
-        $this->charset = CHARSET;
     }
 
     function connect()
@@ -23,13 +23,12 @@ class Database
             $connection = "mysql:host=" . $this->host . ";"
                 . "dbname=" . $this->db . ";"
                 . "user=" . $this->user . ";"
-                . "password=" . $this->password . ";"
-                . "charset=" . $this->charset;
+                . "password=" . $this->password . ";";
 
-            $options = [
+            $options = array(
                 PDO::ATTR_ERRMODE           =>  PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES  => FALSE,
-            ];
+            );
 
             $pdo = new PDO($connection, $this->user, $this->password, $options);
 
