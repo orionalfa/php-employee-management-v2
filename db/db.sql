@@ -34,7 +34,7 @@ CREATE TABLE users (
 );
 
 --
--- Insert data for "content" table
+-- Insert data for "employees" table
 --
 
 INSERT INTO `employees` (
@@ -48,7 +48,9 @@ INSERT INTO `employees` (
   `age`,
   `postalCode`,
   `phoneNumber`
-) 
+)
+
+
 VALUES
 (
   "Jean",
