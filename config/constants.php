@@ -12,7 +12,7 @@ define("VIEWS", BASE_PATH . '/views');
 define("MODELS", BASE_PATH . '/models');
 
 //ENTITIES
-// define("ENTITIES", MODELS . '/entities');
+define("ENTITIES", MODELS . '/entities');
 
 //HTML
 define('HTML', BASE_URL . "/assets/html/");
@@ -29,3 +29,6 @@ define('IMAGES', BASE_URL . 'assets/images');
 
 //NODE_MODULES
 define("NODE_MODULES", BASE_URL . "node_modules/");
+
+//FLOW CONTROL
+define('FLOW_CONTROL', true);

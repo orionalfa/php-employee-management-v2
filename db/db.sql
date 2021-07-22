@@ -22,7 +22,7 @@ CREATE TABLE `employees` (
   `state` varchar(20) NOT NULL,
   `age` INT(2) NOT NULL,
   `postalCode` varchar(5) NOT NULL,
-  `phoneNumber` varchar(9) NOT NULL,
+  `phoneNumber` varchar(9) NOT NULL
 );
 
 
@@ -114,5 +114,6 @@ VALUES
 
 
 INSERT INTO users (user_name, user_password, user_email) VALUES
-('admin', '$2y$10$nuh1LEwFt7Q2/wz9/CmTJO91stTBS4cRjiJYBY3sVCARnllI.wzBC', 'admin@assemblerschool.com');
+('admin', '$2y$10$nuh1LEwFt7Q2/wz9/CmTJO91stTBS4cRjiJYBY3sVCARnllI.wzBC', 'admin@assemblerschool.com'),
+('Erick Noiztbander', '$2y$10$0CrU8swERZ.RcIPF5x4QAOtXk6W2W\/a9S.z1c6gYZDpk.xpQbvxAi', 'erick@assemblerschool.com');
 

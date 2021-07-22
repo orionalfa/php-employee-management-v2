@@ -1,6 +1,5 @@
 <?php
 
-// include_once ENTITIES . '/Content.php';
 
 class LoginController extends Controller
 {
@@ -14,5 +13,18 @@ class LoginController extends Controller
     public function render()
     {
         $this->view->render('login/index');
+    }
+
+
+    public function getUserByName($userName)
+    {
+        if (isset($this->model)) {
+            $result = $this->model->getUserByName($userName);
+            var_dump($result);
+            return $result;
+        } else {
+            echo "Login Model not loaded";
+            return false;
+        }
     }
 }
