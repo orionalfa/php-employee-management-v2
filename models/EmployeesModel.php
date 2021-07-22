@@ -1,6 +1,6 @@
 <?php
 
-// include_once ENTITIES . '/Content.php';
+include_once ENTITIES . '/Employees.php';
 
 class EmployeesModel extends Model
 {
@@ -12,5 +12,11 @@ class EmployeesModel extends Model
         echo '<p>Employees model</p>';
     }
 
+    public function getById($id)
+    {
+        $employeesDb = new Employees;
+        $targetEmployee = $employeesDb->getById($id);
+        var_dump($targetEmployee);
+    }
 
 }
