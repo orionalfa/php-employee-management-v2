@@ -12,10 +12,13 @@ define("VIEWS", BASE_PATH . '/views');
 define("MODELS", BASE_PATH . '/models');
 
 //ENTITIES
-// define("ENTITIES", MODELS . '/entities');
+define("ENTITIES", MODELS . '/entities');
 
 //CSS
 define('CSS', BASE_URL . '/public/assets/css');
 
 //JS
 define('JS', BASE_URL . '/public/assets/js');
+
+//FLOW CONTROL
+define('FLOW_CONTROL', true);
