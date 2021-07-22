@@ -10,19 +10,21 @@ class LoginController extends Controller
 
         echo '<p>Login Controller</p>';
     }
-
-    public function getUserByName($userName)
+    public function render()
     {
-        if(isset($this->model)){
-            $result = $this->model->getUserByName($userName);
-            var_dump($result);
-            return $result;
-        }else{
-            echo "Login Model not loaded";
-            return false;
-        }
-
+        $this->view->render('login/index');
     }
 
 
+    public function getUserByName($userName)
+    {
+        if (isset($this->model)) {
+            $result = $this->model->getUserByName($userName);
+            var_dump($result);
+            return $result;
+        } else {
+            echo "Login Model not loaded";
+            return false;
+        }
+    }
 }

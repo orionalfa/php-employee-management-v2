@@ -1,4 +1,3 @@
-$BASE_URL = "http://localhost/php-employee-management-v1";
 function switchRegisterForm() {
   let newUserText = document.getElementById("new__user--text");
 
@@ -16,7 +15,7 @@ function switchRegisterForm() {
       registerForm.style.display = "none";
       newUserText.innerHTML = "New user, register now?";
     }
-    console.log("clickeed");
+    console.log("clicked");
   }
 }
 

@@ -25,21 +25,17 @@ class Router
             require_once($fileController);
             $controller = new LoginController();
             $controller->loadModel('Login');
-            $controller->getUserByName('Erick Noiztbander');
-
-            // $controller->render();
-            // return false;
-        }elseif ($url[0] == "employees") {
+            $controller->render();
+            return false;
+        } elseif ($url[0] == "employees") {
             $fileController = CONTROLLERS . '/' . 'EmployeesController.php';
             require_once($fileController);
             $controller = new EmployeesController();
             $controller->loadModel('Employees');
-        }
-        else{
+        } else {
             echo "<br>404 Wrong resource";
         }
     }
-
 }
 // class Router
 // {
