@@ -9,11 +9,22 @@ class EmployeesController extends Controller
         echo '<p>Employees Controller</p>';
     }
 
+    public function getAll()
+    {
+        if (isset($this->model)) {
+            $result = $this->model->getAll();
+            return $result;
+        } else {
+            echo "Employees Model not loaded";
+            return false;
+        }
+    }
+
+
     public function getById($id)
     {
         if (isset($this->model)) {
             $result = $this->model->getById($id);
-            var_dump($result);
             return $result;
         } else {
             echo "Employees Model not loaded";
