@@ -33,6 +33,8 @@ class Router
             $controller = new EmployeesController();
             $controller->loadModel('Employees');
             $controller->render();
+            $allEmployees = $controller->getAll();
+            var_dump($allEmployees);
         } else {
             echo "<br>404 Wrong resource";
         }
