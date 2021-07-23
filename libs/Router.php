@@ -27,11 +27,12 @@ class Router
             $controller->loadModel('Login');
             $controller->render();
             return false;
-        } elseif ($url[0] == "employees") {
+        } elseif ($url[0] == "dashboard") {
             $fileController = CONTROLLERS . '/' . 'EmployeesController.php';
             require_once($fileController);
             $controller = new EmployeesController();
             $controller->loadModel('Employees');
+            $controller->render();
             $allEmployees = $controller->getAll();
             var_dump($allEmployees);
         } else {
