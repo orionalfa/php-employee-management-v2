@@ -15,7 +15,9 @@
 	</div>
 	<div class="logout__wrapper d-flex justify-content-between align-item-center">
 		<div class="d-flex align-items-center">
-			<h5 class="text-light">Welcome <span class="text-light"><?= $_SESSION["username"] ?></span></h5>
+			<h5 class="text-light">Welcome <span class="text-light">
+					<!-- <?= $_SESSION["username"] ?> -->
+				</span></h5>
 		</div>
 		<!-- <div class=" d-flex align-items-center justify-content-center h-100">
 			<div class="profile_picture">
@@ -23,7 +25,8 @@
 			</div>
 		</div> -->
 		<div class="d-flex justify-content-center align-items-center">
-			<a href="../src/library/loginController.php?logoutClicked=true" class="d-flex justify-content-between align-item-center text-decoration-none">
+			<a href="../src/library/loginController.php?logoutClicked=true"
+				class="d-flex justify-content-between align-item-center text-decoration-none">
 				<button type="button" class="btn btn-light text-dark">Logout</button>
 			</a>
 		</div>
