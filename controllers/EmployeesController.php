@@ -20,7 +20,7 @@ class EmployeesController extends Controller
             $result = $this->model->getAll();
             return $result;
         } else {
-            echo "Employees Model not loaded";
+            echo "<br>Employees Model not loaded";
             return false;
         }
     }
@@ -32,7 +32,18 @@ class EmployeesController extends Controller
             $result = $this->model->getById($id);
             return $result;
         } else {
-            echo "Employees Model not loaded";
+            echo "<br>Employees Model not loaded";
+            return false;
+        }
+    }
+
+    public function insert($data)
+    {
+        if (isset($this->model)) {
+            $result = $this->model->insert($data);
+            return $result;
+        } else {
+            echo "<br>Employees Model not loaded";
             return false;
         }
     }

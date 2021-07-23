@@ -33,13 +33,46 @@ class Router
             $controller = new EmployeesController();
             $controller->loadModel('Employees');
             $controller->render();
-            $allEmployees = $controller->getAll();
-            var_dump($allEmployees);
+
+            // $data = [
+            // 'name' => 'Pajaro',
+            // 'lastName' => 'Gonzalez',
+            // 'email' => 'goneBird@sky.de',
+            // 'gender' => 'F',
+            // 'city' => 'Granada',
+            // 'streetAddress' => 'Floridablanca Str, 95',
+            // 'state' => 'Angola',
+            // 'age' => 38,
+            // 'postalCode' => 10999,
+            // 'phoneNumber' => '666777888'
+            // ];
+
+            // echo $controller->insert($data) . "<br>";
+
+            $result = $controller->getAll();
+            var_dump($result);
         } else {
             echo "<br>404 Wrong resource";
         }
     }
 }
+
+
+// [
+//     'name' => 'Pajaro',
+//     'lastName' => 'Gonzalez',
+//     'email' => 'goneBird@sky.de',
+//     'gender' => 'F',
+//     'city' => 'Granada',
+//     'streetAddress' => 'Floridablanca Str, 95',
+//     'state' => 'Angola',
+//     'age' => 38,
+//     'postalCode' => 10999,
+//     'phoneNumber' => '666777888'
+// ]
+
+
+
 // class Router
 // {
 //     function __construct()

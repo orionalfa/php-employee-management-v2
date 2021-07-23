@@ -10,6 +10,7 @@ class Employees extends Database
         parent::__construct();
         if(FLOW_CONTROL)
             echo '<p>Employees entity</p>';
+
     }
 
     public function getAll()
@@ -34,4 +35,48 @@ class Employees extends Database
         return $results;
 
     }
+
+    public function insert($data)
+    {
+        $result = "Insertion OK";
+        try {
+            //Insert data into DB
+            $query = $this->connect()->prepare('INSERT INTO employees (
+                name,
+                lastName,
+                email,
+                gender,
+                city,
+                streetAddress,
+                state,
+                age,
+                postalCode,
+                phoneNumber
+              ) VALUES(
+                :name,
+                :lastName,
+                :email,
+                :gender,
+                :city,
+                :streetAddress,
+                :state,
+                :age,
+                :postalCode,
+                :phoneNumber
+              )');
+
+            $query->execute($data);
+            // $query->execute(['name' => $data['name'], 'email' => $data['email'], 'text' => $data['text']]);
+            return $result;
+        } catch (PDOException $e) {
+            echo 'Error INSERT: ' . $e->getMessage();
+            if ($e->errorInfo[1] == 1062) {
+                return $result = "This email already exists";
+            } else {
+                return $result = "Database error";
+            }
+            return $result = $e->getMessage();
+        }
+    }
+
 }
