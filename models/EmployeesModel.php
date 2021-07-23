@@ -36,4 +36,11 @@ class EmployeesModel extends Model
 
     }
 
+    public function delete($id)
+    {
+        $employeesDb = new Employees;
+        return $employeesDb->delete($id);
+
+    }
+
 }

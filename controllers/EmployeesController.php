@@ -47,4 +47,14 @@ class EmployeesController extends Controller
             return false;
         }
     }
+
+    public function delete($id)
+    {
+        if (isset($this->model)) {
+            return $this->model->delete($id);
+        } else {
+            echo "<br>Employees Model not loaded";
+            return false;
+        }
+    }
 }

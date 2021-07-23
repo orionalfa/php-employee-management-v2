@@ -34,6 +34,7 @@ class Router
             $controller->loadModel('Employees');
             $controller->render();
 
+            // *** DATA FOR TESTING INSERT ***
             // $data = [
             // 'name' => 'Pajaro',
             // 'lastName' => 'Gonzalez',
@@ -47,7 +48,14 @@ class Router
             // 'phoneNumber' => '666777888'
             // ];
 
+            // *** INSERT CALL SAMPLE ***
+
             // echo $controller->insert($data) . "<br>";
+
+            // *** DELETION BY ID EXAMPLE ***
+
+            // var_dump($controller->delete(2));
+
 
             $result = $controller->getAll();
             var_dump($result);

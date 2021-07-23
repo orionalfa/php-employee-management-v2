@@ -79,4 +79,19 @@ class Employees extends Database
         }
     }
 
+
+    public function delete($id)
+    {
+        $result = "Deletion of ID" . $id . " OK";
+        try {
+            //Delete entry from DB
+            $query = $this->connect()->prepare('DELETE FROM employees WHERE id = :id');
+            $query->execute(['id' => $id]);
+            return true;
+        } catch (PDOException $e) {
+            echo 'Error DELETE: ' . $e->getMessage();
+            return false;
+        }
+    }
+
 }
