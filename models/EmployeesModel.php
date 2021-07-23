@@ -28,4 +28,19 @@ class EmployeesModel extends Model
         return $targetEmployee;
     }
 
+    public function insert($data)
+    {
+        $employeesDb = new Employees;
+        $result = $employeesDb->insert($data);
+        return $result;
+
+    }
+
+    public function delete($id)
+    {
+        $employeesDb = new Employees;
+        return $employeesDb->delete($id);
+
+    }
+
 }
