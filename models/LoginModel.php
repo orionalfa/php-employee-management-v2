@@ -17,9 +17,8 @@ class LoginModel extends Model
     {
         $usersDb = new Users;
         $targetUser = $usersDb->getByName("$userName");
-        var_dump($targetUser);
+        // var_dump($targetUser);
 
     }
-
 
 }

@@ -32,6 +32,8 @@ class Router
             require_once($fileController);
             $controller = new EmployeesController();
             $controller->loadModel('Employees');
+            $allEmployees = $controller->getAll();
+            var_dump($allEmployees);
         } else {
             echo "<br>404 Wrong resource";
         }
