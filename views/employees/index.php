@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", "On");
-echo "Dashboard View(Employees)";
+// echo "Dashboard View(Employees)";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,11 +34,16 @@ echo "Dashboard View(Employees)";
     <?php include "assets/html/header.html"; ?>
     <main class="min-vh-50 h-100 d-inline-block">
         <div class="">
+            <h1></h1>
             <div id="employeesList"></div>
         </div>
     </main>
     <?php include "assets/html/footer.html"; ?>
+    <script>
+        const baseURL = "<?php echo BASE_URL; ?>";
+    </script>
     <script src="<?= JS ?>jsGrid.js"></script>
+
     <!-- <script>
         loadEmployeesList();
     </script> -->

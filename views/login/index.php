@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", "On");
-echo "<p>Login view</p>";
+// echo "<p>Login view</p>";
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ echo "<p>Login view</p>";
                 </div>
             </div>
             <div class="d-flex flex-row gap-2 justify-content-center align-item-between h-100 w-100">
-                <form action="<?php echo CONTROLLERS; ?>/LoginController.php" method="POST" class="d-flex flex-column gap-3 p-2">
+                <form action="<?php echo BASE_URL; ?>employees/render" method="POST" class="d-flex flex-column gap-3 p-2">
                     <div class="w-100 d-flex justify-content-center pt-2  h-100">
                         <div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
                             <div class="d-flex justify-content-center align-item-center">
@@ -62,7 +62,7 @@ echo "<p>Login view</p>";
 
                 </form>
 
-                <form action=" <?php echo CONTROLLERS ?>/LoginController.php" method="POST" class=" flex-column gap-3 p-2" id="register_form">
+                <form action="" method="POST" class=" flex-column gap-3 p-2" id="register_form">
                     <div class="w-100 d-flex justify-content-center pt-2  h-100">
                         <div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
                             <div class="d-flex justify-content-center align-item-center">

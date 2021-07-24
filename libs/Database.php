@@ -15,8 +15,8 @@ class Database
         $this->db = DB;
         $this->user = USER;
         $this->password = PASSWORD;
-        if(FLOW_CONTROL)
-            echo "Database Class<br>";
+        // if(FLOW_CONTROL)
+        //     echo "Database Class<br>";
     }
 
     function connect()
@@ -27,10 +27,10 @@ class Database
                 . "user=" . $this->user . ";"
                 . "password=" . $this->password . ";";
 
-            $options = array(
+            $options = [
                 PDO::ATTR_ERRMODE           =>  PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES  => FALSE,
-            );
+            ];
 
             $pdo = new PDO($connection, $this->user, $this->password, $options);
 

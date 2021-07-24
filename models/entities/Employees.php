@@ -8,9 +8,8 @@ class Employees extends Database
     {
         //This calls the constructor of the class Model is extending
         parent::__construct();
-        if(FLOW_CONTROL)
-            echo '<p>Employees entity</p>';
-
+        // if (FLOW_CONTROL)
+        //     echo '<p>Employees entity</p>';
     }
 
     public function getAll()
@@ -21,7 +20,7 @@ class Employees extends Database
         $stmt->execute();
 
         $results = $stmt->fetchAll();
-        return $results;
+        return json_encode($results);
     }
 
     public function getById($id)
@@ -33,7 +32,6 @@ class Employees extends Database
 
         $results = $stmt->fetchAll();
         return $results;
-
     }
 
     public function insert($data)
@@ -93,5 +91,4 @@ class Employees extends Database
             return false;
         }
     }
-
 }

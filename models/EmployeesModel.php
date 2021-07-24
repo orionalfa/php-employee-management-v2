@@ -1,6 +1,6 @@
 <?php
 
-include_once ENTITIES . '/Employees.php';
+// include_once ENTITIES . '/Employees.php';
 
 class EmployeesModel extends Model
 {
@@ -9,17 +9,23 @@ class EmployeesModel extends Model
         //This calls to the constructor of the class Model is extending
         parent::__construct();
 
-        echo '<p>Employees model</p>';
+        // echo '<p>Employees model</p>';
     }
 
     public function getAll()
     {
-        $employeesDb = new Employees;
-        $all=$employeesDb->getAll();
-        return $all;
+        $sql = "SELECT * FROM employees";
 
+        $stmt = $this->db->connect()->prepare($sql);
+        $stmt->execute();
 
+        $results = $stmt->fetchAll();
+        return $results;
+        // $employeesDb = new Employees;
+        // $all = $employeesDb->getAll();
+        // return $all;
     }
+
 
     public function getById($id)
     {
@@ -30,17 +36,57 @@ class EmployeesModel extends Model
 
     public function insert($data)
     {
-        $employeesDb = new Employees;
-        $result = $employeesDb->insert($data);
-        return $result;
 
+        try {
+            //Insert data into DB
+            $query = $this->db->connect()->prepare('INSERT INTO employees (
+                name,
+                lastName,
+                email,
+                gender,
+                city,
+                streetAddress,
+                state,
+                age,
+                postalCode,
+                phoneNumber
+              ) VALUES(
+                :name,
+                :lastName,
+                :email,
+                :gender,
+                :city,
+                :streetAddress,
+                :state,
+                :age,
+                :postalCode,
+                :phoneNumber
+              )');
+
+            $query->execute($data);
+            // $query->execute(['name' => $data['name'], 'email' => $data['email'], 'text' => $data['text']]);
+        } catch (PDOException $e) {
+            echo 'Error INSERT: ' . $e->getMessage();
+            if ($e->errorInfo[1] == 1062) {
+                return "This email already exists";
+            } else {
+                return "Database error";
+            }
+            return  $e->getMessage();
+        }
     }
 
     public function delete($id)
     {
-        $employeesDb = new Employees;
-        return $employeesDb->delete($id);
-
+        try {
+            //Delete entry from DB
+            $sql = 'DELETE FROM employees WHERE id = :id';
+            $query = $this->db->connect()->prepare($sql);
+            $query->execute(['id' => $id]);
+            return true;
+        } catch (PDOException $e) {
+            echo 'Error DELETE: ' . $e->getMessage();
+            return false;
+        }
     }
-
 }
