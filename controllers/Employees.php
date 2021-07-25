@@ -43,6 +43,10 @@ class Employees extends Controller
                 parse_str(file_get_contents("php://input"), $_POST);
                 $this->model->insert($_POST);
                 break;
+            case "PUT":
+                parse_str(file_get_contents("php://input"), $_PUT);
+                $this->model->update($_PUT);
+                break;
         }
     }
     // public function insert($data)

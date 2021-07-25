@@ -6,48 +6,28 @@ class Login extends Controller
 {
     public function __construct()
     {
-        //This calls to the constructor of the class controller is extending
         parent::__construct();
         $this->view->render("login/index");
-
-        // echo '<p>Login Controller</p>';
     }
 
-    // public function render()
-    // {
-    //     $this->view->render("login/index");
-    // }
-
-    public function loginUser()
+    public function render()
     {
-        echo "login";
-        $user = $this->model->userLogin();
+        $this->view->render("login/index");
+    }
 
-        if (isset($user["user_name"])) {
-            echo $user["user_name"];
-            // session_start();
-            $_SESSION["username"] = $user["user_name"];
+    public function login()
+    {
+        $user = $this->model->loginUser($_POST);
+        print_r($user);
+        if (isset($_SESSION["username"])) {
+            unset($_SESSION["username"]);
             header("Location:" . BASE_URL . "employees/render");
         } else {
-            $this->view->render("login/index");
+            header("Location:" . BASE_URL . "login?message=error");
         }
     }
 
-    // public function render()
-    // {
-    //     $this->view->render('login/index');
-    // }
-
-
-    // public function getUserByName($userName)
-    // {
-    //     if (isset($this->model)) {
-    //         $result = $this->model->getUserByName($userName);
-    //         var_dump($result);
-    //         return $result;
-    //     } else {
-    //         echo "Login Model not loaded";
-    //         return false;
-    //     }
-    // }
+    public function logout()
+    {
+    }
 }

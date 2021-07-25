@@ -29,9 +29,13 @@ class EmployeesModel extends Model
 
     public function getById($id)
     {
-        $employeesDb = new Employees;
-        $targetEmployee = $employeesDb->getById($id);
-        return $targetEmployee;
+        $sql = "SELECT * FROM employees WHERE id = $id";
+
+        $stmt = $this->db->connect()->prepare($sql);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll();
+        return $results;
     }
 
     public function insert($data)
@@ -86,6 +90,40 @@ class EmployeesModel extends Model
             return true;
         } catch (PDOException $e) {
             echo 'Error DELETE: ' . $e->getMessage();
+            return false;
+        }
+    }
+    public function update($request)
+    {
+        $id = $request["id"];
+        $name = $request["name"];
+        $lastName = $request["lastName"];
+        $email = $request["email"];
+        $gender = $request["gender"];
+        $city = $request["city"];
+        $streetAddress = $request["streetAddress"];
+        $state = $request["state"];
+        $age = $request["age"];
+        $postalCode = $request["postalCode"];
+        $phoneNumber = $request["phoneNumber"];
+
+        try {
+            $sql = "UPDATE employees SET name = :name,
+                lastName = :lastName,
+                email = :email,
+                gender = :gender,
+                city = :city,
+                streetAddress = :streetAddress,
+                state = :state,
+                age = :age,
+                postalCode = :postalCode,
+                phoneNumber = :phoneNumber
+                WHERE id = :id";
+            $query = $this->db->connect()->prepare($sql);
+            $query->execute(['id' => $id, 'name' => $name, 'lastName' => $lastName, 'email' => $email, 'gender' => $gender, 'city' => $city, 'streetAddress' => $streetAddress, 'state' => $state, 'age' => $age, 'postalCode' => $postalCode, 'phoneNumber' => $phoneNumber]);
+            return true;
+        } catch (PDOException $e) {
+            echo 'Error UPDATE:' . $e->getMessage();
             return false;
         }
     }

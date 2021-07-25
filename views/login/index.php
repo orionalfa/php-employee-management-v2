@@ -1,6 +1,8 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", "On");
+session_start();
+ob_start()
 // echo "<p>Login view</p>";
 ?>
 
@@ -41,7 +43,7 @@ ini_set("display_errors", "On");
                 </div>
             </div>
             <div class="d-flex flex-row gap-2 justify-content-center align-item-between h-100 w-100">
-                <form action="<?php echo BASE_URL; ?>employees/render" method="POST" class="d-flex flex-column gap-3 p-2">
+                <form action="login/login" method="POST" class="d-flex flex-column gap-3 p-2">
                     <div class="w-100 d-flex justify-content-center pt-2  h-100">
                         <div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
                             <div class="d-flex justify-content-center align-item-center">

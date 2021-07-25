@@ -18,35 +18,24 @@ class LoginModel extends Model
 
         $stmt = $this->db->connect()->prepare($sql);
         $stmt->execute();
-
-        $results = $stmt->fetchAll();
+        $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $results;
     }
 
-    public function userLogin()
+    public function loginUser($data)
     {
-        $username = $_POST["username"];
-        $userPass = $_POST["password"];
-
-        if (!isset($username) || !isset($userPass)) {
+        if (!isset($data["username"]) || !isset($data["password"])) {
             return "Missing Username or Password";
         }
-        $userInfo = $this->getUser();
-        $usersData = $userInfo[0];
+        $usersInfo = $this->getUser();
+        $usersData = $usersInfo[0];
+
         $isValidated = false;
-        if ($username == $usersData['user_name'] && password_verify($userPass, $usersData["user_password"])) {
-            $isValidated = true;
-            $loggedInUser = $usersData;
+        if ($data["username"] == $usersData['user_name'] && password_verify($data["password"], $usersData["user_password"])) {
+            $_SESSION["username"] = $data["username"];
+            return $usersData;
+        } else {
+            return $isValidated;
         }
-        return $isValidated ? $loggedInUser : "Check your Username or Password again!";
     }
-
-    // public function getUserByName($userName)
-    // {
-    //     $usersDb = new Users;
-    //     $targetUser = $usersDb->getByName("$userName");
-    //     // var_dump($targetUser);
-
-    // }
-
 }

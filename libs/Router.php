@@ -17,12 +17,11 @@ class Router
             $controller->loadModel('Login');
             return false;
         }
-        $ucFirst = ucfirst($url[0]);
 
+        $ucFirst = ucfirst($url[0]);
         $fileController = CONTROLLERS . "/" . $ucFirst . ".php";
         if (file_exists($fileController)) {
             require_once $fileController;
-
             $controller = new $ucFirst();
             $controller->loadModel($ucFirst);
             if (isset($url[1])) {
@@ -30,7 +29,7 @@ class Router
             }
         } else {
             echo "Router error";
-            echo $fileController;
+            // error controller needed
         }
     }
 }
