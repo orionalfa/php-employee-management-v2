@@ -2,7 +2,9 @@ $("#employeesList").jsGrid({
   height: "85vh",
   width: "100%",
 
-  editing: false,
+  inserting: true,
+  //   filtering: true,
+  editing: true,
   sorting: true,
   paging: true,
   autoload: true,
@@ -11,16 +13,32 @@ $("#employeesList").jsGrid({
   deleteConfirm: "Do you confirm you want to delete employee?",
 
   controller: {
-    loadData: function () {
+    loadData: function (filter) {
       return $.ajax({
         type: "GET",
-        url: ``,
+        url: baseURL + "employees/getAll",
+        data: filter,
+        dataType: "json",
       });
     },
     deleteItem: function (item) {
       return $.ajax({
         type: "DELETE",
-        url: ``,
+        url: baseURL + "employees/handleData",
+        data: item,
+      });
+    },
+    insertItem: function (item) {
+      return $.ajax({
+        type: "POST",
+        url: baseURL + "employees/handleData",
+        data: item,
+      });
+    },
+    updateItem: function (item) {
+      return $.ajax({
+        type: "PUT",
+        url: baseURL + "employees/handleData",
         data: item,
       });
     },
@@ -33,7 +51,15 @@ $("#employeesList").jsGrid({
       title: "Name",
       type: "text",
       align: "",
-      width: 150,
+      width: 100,
+    },
+    {
+      name: "lastName",
+      validate: "required",
+      title: "Last Name",
+      type: "text",
+      align: "",
+      width: 100,
     },
     {
       name: "email",
@@ -54,17 +80,48 @@ $("#employeesList").jsGrid({
       width: 50,
     },
     {
+      name: "gender",
+      validate: "required",
+      title: "Gender",
+      type: "select",
+      items: [
+        { Name: "", Id: "" },
+        { Name: "M", Id: "M" },
+        { Name: "F", Id: "F" },
+      ],
+      valueField: "Id",
+      textField: "Name",
+      align: "",
+      width: 70,
+    },
+    {
       name: "streetAddress",
+      validate: "required",
       title: "Street No.",
-      type: "number",
+      type: "text",
+      align: "",
+      width: 150,
+    },
+    {
+      name: "city",
+      title: "City",
+      validate: "required",
+      type: "text",
       align: "",
       width: 100,
     },
-    { name: "city", title: "City", type: "text", align: "", width: 100 },
-    { name: "state", title: "State", type: "text", align: "", width: 50 },
+    {
+      name: "state",
+      title: "State",
+      validate: "required",
+      type: "text",
+      align: "",
+      width: 50,
+    },
     {
       name: "postalCode",
       title: "Postal Code",
+      validate: "required",
       type: "number",
       align: "",
       width: 100,
@@ -72,6 +129,7 @@ $("#employeesList").jsGrid({
     {
       name: "phoneNumber",
       title: "Phone Number",
+      validate: "required",
       type: "number",
       align: "",
       width: 200,
@@ -79,7 +137,7 @@ $("#employeesList").jsGrid({
     {
       type: "control",
       modeSwitchButton: false,
-      editButton: false,
+      editButton: true,
       headerTemplate: function () {
         return $("<button>")
           .attr("type", "button")
@@ -91,7 +149,4 @@ $("#employeesList").jsGrid({
       width: 100,
     },
   ],
-  rowClick: function (item) {
-    //   editEmployee(item);
-  },
 });

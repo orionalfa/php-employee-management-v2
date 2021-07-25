@@ -1,10 +1,13 @@
 <?php
-class View{
-    function __construct(){
-        echo '<p>Base view class</p>';
+class View
+{
+    function __construct()
+    {
+        // echo '<p>Base view class</p>';
     }
 
-    function render($name){
+    function render($name)
+    {
         require VIEWS . '/' . $name . '.php';
     }
 }

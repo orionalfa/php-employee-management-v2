@@ -3,12 +3,12 @@ class Controller
 {
     function __construct()
     {
-        echo '<p>Base controller class</p>';
+        // echo '<p>Base controller class</p>';
         $this->view = new View();
         // if(EXECUTION_FLOW)
-        echo '<p>Base controller class</p>';
+        // echo '<p>Base controller class</p>';
         // $this->view = new View();
-        $this->loadModel(get_class($this) . "Model");
+        // $this->loadModel(get_class($this) . "Model");
     }
 
     function loadModel($model)
