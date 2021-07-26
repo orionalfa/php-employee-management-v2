@@ -6,17 +6,17 @@
     </div>
 
     <div class="d-flex flex-row align-items-center justify-content-start w-100 px-4">
-        <a href="./dashboard.php" class="text-decoration-none">
+        <a href="<?= BASE_URL; ?>employees/render" class="text-decoration-none">
             <h5 class="px-3 text-light ">Dashboard</h5>
         </a>
-        <a href="./employee.php" class="text-decoration-none">
+        <a href="<?= BASE_URL; ?>employees/addEmployee" class="text-decoration-none">
             <h5 class="px-3 text-muted">Employee</h5>
         </a>
     </div>
     <div class="logout__wrapper d-flex justify-content-between align-item-center">
         <div class="d-flex align-items-center">
             <h5 class="text-light">Welcome <span class="text-light">
-                    <?= $_SESSION["username"] ?>
+                    <!-- <?= $_SESSION["username"] ?> -->
                 </span></h5>
         </div>
         <!-- <div class=" d-flex align-items-center justify-content-center h-100">

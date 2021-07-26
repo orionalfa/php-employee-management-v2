@@ -38,11 +38,16 @@ class Employees extends Controller
         $this->view->render("employees/employee");
     }
 
+    public function addEmployee()
+    {
+        $this->view->render("employees/newEmployee");
+    }
+
     public function insertEmployee()
     {
         try {
             $this->model->insert($_POST);
-            header("Location:" . BASE_URL);
+            header("Location:" . BASE_URL . "employees/render");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

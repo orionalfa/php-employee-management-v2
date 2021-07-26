@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", "On");
 // echo "Dashboard View(Employees)";
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,7 +1,6 @@
 <!-- TODO Employee view -->
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +46,7 @@ session_start();
     </section> -->
 
     <main class="d-flex w-100 min-vh-50 justify-content-center align-item-center">
-        <form action="<?= BASE_URL; ?>employees/render" method="POST" class="d-flex flex-column gap-3 p-2">
+        <form action="<?= BASE_URL; ?>employees/insertEmployee" method="POST" class="d-flex flex-column gap-3 p-2">
             <div class="d-flex flex-row gap-3 p-2 newUserForm">
                 <section class="d-flex flex-column gap-3 p-2" id="formColumnOne">
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 h-100">
@@ -66,7 +65,7 @@ session_start();
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
-                        <h5>Email address</h5>
+                        <h5>Email adress</h5>
                         <div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-envelope"></i>
@@ -206,7 +205,7 @@ session_start();
             </div>
             <div class="px-3">
                 <button type="submit" name="submitEmployee" class="btn btn-primary border pt-3 pb-3 text-light">Submit</button>
-                <a href="./dashboard.php">
+                <a href="<?= BASE_URL; ?>employees/render">
                     <button type="button" name="return" class="btn btn-light border pt-3 pb-3 text-dark">Return</button>
                 </a>
             </div>
