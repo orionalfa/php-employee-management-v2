@@ -26,19 +26,27 @@ class Router
             $controller->loadModel($ucFirst);
             $nParams = sizeof($url);
 
-            if ($nParams == 2) {
+            if ($nParams == 1) {
+                $controller->render();
+            }
+            else if ($nParams == 2 && method_exists($controller,$url[1]) && $url[1]!="renderEmployee") {
                 $controller->{$url[1]}();
-            } elseif ($nParams == 3) {
+            } elseif ($nParams == 3 && method_exists($controller,$url[1])) {
                 $controller->{$url[1]}($url[2]);
-            } elseif ($nParams > 3) {
+            } elseif ($nParams > 3 && method_exists($controller,$url[1])) {
                 $params = array();
                 for ($i = 2; $i < $nParams; $i++) {
                     $controller->{$url[1]}($params);
                 }
+            } else{
+                require_once CONTROLLERS . "/Failure.php";
+                $controller = new FailureController;
+    
             }
         } else {
-            echo "Router error";
-            // error controller needed
+            // echo "Router error";
+            require_once CONTROLLERS . "/Failure.php";
+            $controller = new FailureController;
         }
     }
 }
