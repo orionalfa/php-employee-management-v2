@@ -21,14 +21,35 @@ class Employees extends Controller
     }
 
 
-    public function getById($id)
+    public function getEmployeeById($id)
     {
         if (isset($this->model)) {
             $result = $this->model->getById($id);
-            return $result;
+            $this->view->id = $id;
+            echo json_encode($result);
         } else {
             echo "<br>Employees Model not loaded";
-            return false;
+        }
+    }
+
+    public function renderEmployee($id)
+    {
+        $this->view->id = $id;
+        $this->view->render("employees/employee");
+    }
+
+    public function addEmployee()
+    {
+        $this->view->render("employees/newEmployee");
+    }
+
+    public function insertEmployee()
+    {
+        try {
+            $this->model->insert($_POST);
+            header("Location:" . BASE_URL . "employees/render");
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
     }
 
