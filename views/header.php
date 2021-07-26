@@ -25,7 +25,7 @@
 			</div>
 		</div> -->
         <div class="d-flex justify-content-center align-items-center">
-            <a href="../src/library/loginController.php?logoutClicked=true" class="d-flex justify-content-between align-item-center text-decoration-none">
+            <a href="<?= BASE_URL; ?>login/logout" class="d-flex justify-content-between align-item-center text-decoration-none">
                 <button type="button" class="btn btn-light text-dark">Logout</button>
             </a>
         </div>

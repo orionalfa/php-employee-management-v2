@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", "On");
 session_start();
-ob_start()
+ob_start();
 // echo "<p>Login view</p>";
 ?>
 

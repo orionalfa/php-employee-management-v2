@@ -1,8 +1,8 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", "On");
-// echo "Dashboard View(Employees)";
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,7 @@ session_start();
 
 <body class="d-flex min-vh-100 flex-column justify-content-between align-item-between d-inline-block m-0 p-0">
 
-    <?php include "assets/html/header.html"; ?>
+    <?php include VIEWS . "/header.php"; ?>
     <main class="min-vh-50 h-100 d-inline-block">
         <div class="">
             <h1></h1>

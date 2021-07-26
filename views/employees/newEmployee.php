@@ -132,7 +132,7 @@ session_start();
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-hand-scissors"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="LastName" type="text" placeholder="" value=<?php if (
+                            <input class="form-control form-control-dark w-100" name="lastName" type="text" placeholder="" value=<?php if (
                                                                                                                                         empty($foundEmployee["lastName"])
                                                                                                                                     ) {
                                                                                                                                         echo "";

@@ -155,7 +155,7 @@ $("#employeesList").jsGrid({
   ],
   rowClick: function (item) {
     window.location.replace(
-      `${baseURL}employees/renderEmployee/${item.item.id}`
+      `${baseURL}employees/getEmployeeById/${item.item.id}`
     );
   },
 });

@@ -24,19 +24,19 @@ class Employees extends Controller
     public function getEmployeeById($id)
     {
         if (isset($this->model)) {
-            $result = $this->model->getById($id);
-            $this->view->id = $id;
-            echo json_encode($result);
+            session_start();
+            $_SESSION["employee"] = $this->model->getById($id);
+            header("Location:" . BASE_URL . "employees/renderEmployee");
         } else {
             echo "<br>Employees Model not loaded";
         }
     }
 
-    public function renderEmployee($id)
+    public function renderEmployee()
     {
-        $this->view->id = $id;
         $this->view->render("employees/employee");
     }
+
 
     public function addEmployee()
     {
@@ -46,7 +46,20 @@ class Employees extends Controller
     public function insertEmployee()
     {
         try {
-            $this->model->insert($_POST);
+            $this->model->insert([
+                // 'id' => $_POST['id'],
+                'name' => $_POST['name'],
+                'lastName' => $_POST['lastName'],
+                'email' => $_POST['email'],
+                'gender' => $_POST['gender'],
+                'age' => $_POST['age'],
+                'streetAddress' => $_POST['streetAddress'],
+                'city' => $_POST['city'],
+                'state' => $_POST['state'],
+                'postalCode' => $_POST['postalCode'],
+                'phoneNumber' => $_POST['phoneNumber']
+            ]);
+            print_r($_POST);
             header("Location:" . BASE_URL . "employees/render");
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -55,10 +68,23 @@ class Employees extends Controller
 
     public function updateEmployee()
     {
-        $this->model->update($_POST);
+        $this->model->update([
+            'id' => $_POST['id'],
+            'name' => $_POST['name'],
+            'lastName' => $_POST['lastName'],
+            'email' => $_POST['email'],
+            'gender' => $_POST['gender'],
+            'city' => $_POST['city'],
+            'streetAddress' => $_POST['streetAddress'],
+            'state' => $_POST['state'],
+            'age' => $_POST['age'],
+            'postalCode' => $_POST['postalCode'],
+            'phoneNumber' => $_POST['phoneNumber']
+        ]);
         $employee = $this->model->getById($_POST["id"]);
         $this->view->employee = $employee;
-        $this->view->render("employees/employee");
+
+        header("Location:" . BASE_URL . "employees/render");
     }
 
     public function handleData()
