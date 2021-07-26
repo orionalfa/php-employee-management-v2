@@ -1,7 +1,7 @@
 <!-- TODO Employee view -->
 <?php
 session_start();
-
+echo $this->employee;
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ session_start();
     </section> -->
 
     <main class="d-flex w-100 min-vh-50 justify-content-center align-item-center">
-        <form action="<?= BASE_URL; ?>employees/render" method="POST" class="d-flex flex-column gap-3 p-2">
+        <form action="<?= BASE_URL; ?>employees/updateEmployee" method="POST" class="d-flex flex-column gap-3 p-2">
             <div class="d-flex flex-row gap-3 p-2 newUserForm">
                 <section class="d-flex flex-column gap-3 p-2" id="formColumnOne">
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 h-100">

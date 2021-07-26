@@ -53,6 +53,14 @@ class Employees extends Controller
         }
     }
 
+    public function updateEmployee()
+    {
+        $this->model->update($_POST);
+        $employee = $this->model->getById($_POST["id"]);
+        $this->view->employee = $employee;
+        $this->view->render("employees/employee");
+    }
+
     public function handleData()
     {
         switch ($_SERVER["REQUEST_METHOD"]) {
@@ -70,24 +78,4 @@ class Employees extends Controller
                 break;
         }
     }
-    // public function insert($data)
-    // {
-    //     if (isset($this->model)) {
-    //         $result = $this->model->insert($data);
-    //         return $result;
-    //     } else {
-    //         echo "<br>Employees Model not loaded";
-    //         return false;
-    //     }
-    // }
-
-    // public function delete($id)
-    // {
-    //     if (isset($this->model)) {
-    //         return $this->model->delete($id);
-    //     } else {
-    //         echo "<br>Employees Model not loaded";
-    //         return false;
-    //     }
-    // }
 }
