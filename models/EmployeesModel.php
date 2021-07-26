@@ -1,6 +1,7 @@
 <?php
 
-// include_once ENTITIES . '/Employees.php';
+require_once(MODELS . '/entities/employee.php');
+
 
 class EmployeesModel extends Model
 {
@@ -21,26 +22,40 @@ class EmployeesModel extends Model
 
         $results = $stmt->fetchAll();
         return $results;
-        // $employeesDb = new Employees;
-        // $all = $employeesDb->getAll();
-        // return $all;
     }
 
 
     public function getById($id)
     {
-        $sql = "SELECT * FROM employees WHERE id = $id";
+        try {
+            $sql = "SELECT * FROM employees WHERE id = $id";
 
-        $stmt = $this->db->connect()->prepare($sql);
-        $stmt->execute();
+            $stmt = $this->db->connect()->prepare($sql);
+            $stmt->execute();
 
-        $results = $stmt->fetchAll();
-        return $results;
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $employee = new Employee(
+                $results['id'],
+                $results['name'],
+                $results['lastName'],
+                $results['email'],
+                $results['gender'],
+                $results['streetAddress'],
+                $results['age'],
+                $results['address'],
+                $results['city'],
+                $results['state'],
+                $results['postalCode'],
+                $results['phoneNumber']
+            );
+            return $employee;
+        } catch (PDOException $e) {
+            echo 'Error INSERT: ' . $e->getMessage();
+        }
     }
 
     public function insert($data)
     {
-
         try {
             //Insert data into DB
             $query = $this->db->connect()->prepare('INSERT INTO employees (

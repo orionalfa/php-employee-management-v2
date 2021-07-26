@@ -24,8 +24,17 @@ class Router
             require_once $fileController;
             $controller = new $ucFirst();
             $controller->loadModel($ucFirst);
-            if (isset($url[1])) {
+            $nParams = sizeof($url);
+
+            if ($nParams == 2) {
                 $controller->{$url[1]}();
+            } elseif ($nParams == 3) {
+                $controller->{$url[1]}($url[2]);
+            } elseif ($nParams > 3) {
+                $params = array();
+                for ($i = 2; $i < $nParams; $i++) {
+                    $controller->{$url[1]}($params);
+                }
             }
         } else {
             echo "Router error";

@@ -1,3 +1,7 @@
+function editEmployee(row) {
+  window.location = `${window.location.pathname}/../../src/employee.php?id=${row.item.id}`;
+}
+
 $("#employeesList").jsGrid({
   height: "85vh",
   width: "100%",
@@ -149,4 +153,9 @@ $("#employeesList").jsGrid({
       width: 100,
     },
   ],
+  rowClick: function (item) {
+    window.location.replace(
+      `${baseURL}employees/renderEmployee/${item.item.id}`
+    );
+  },
 });
