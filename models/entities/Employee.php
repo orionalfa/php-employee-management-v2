@@ -9,8 +9,8 @@ class Employee
         string $lastName,
         string $email,
         string $gender,
-        int $age,
         string $streetAddress,
+        int $age,
         string $city,
         string $state,
         int $postalCode,
@@ -21,8 +21,8 @@ class Employee
         $this->lastName = $lastName;
         $this->email = $email;
         $this->gender = $gender;
-        $this->age = $age;
         $this->streetAddress = $streetAddress;
+        $this->age = $age;
         $this->city = $city;
         $this->state = $state;
         $this->postalCode = $postalCode;

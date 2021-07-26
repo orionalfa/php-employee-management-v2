@@ -35,18 +35,17 @@ class EmployeesModel extends Model
 
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $employee = new Employee(
-                $results['id'],
-                $results['name'],
-                $results['lastName'],
-                $results['email'],
-                $results['gender'],
-                $results['streetAddress'],
-                $results['age'],
-                $results['address'],
-                $results['city'],
-                $results['state'],
-                $results['postalCode'],
-                $results['phoneNumber']
+                $results[0]['id'],
+                $results[0]['name'],
+                $results[0]['lastName'],
+                $results[0]['email'],
+                $results[0]['gender'],
+                $results[0]['streetAddress'],
+                $results[0]['age'],
+                $results[0]['city'],
+                $results[0]['state'],
+                $results[0]['postalCode'],
+                $results[0]['phoneNumber']
             );
             return $employee;
         } catch (PDOException $e) {
@@ -58,15 +57,15 @@ class EmployeesModel extends Model
     {
         try {
             //Insert data into DB
-            $query = $this->db->connect()->prepare('INSERT INTO employees (
+            $query = 'INSERT INTO employees (
                 name,
                 lastName,
                 email,
                 gender,
-                city,
-                streetAddress,
-                state,
                 age,
+                streetAddress,
+                city,
+                state,
                 postalCode,
                 phoneNumber
               ) VALUES(
@@ -74,16 +73,26 @@ class EmployeesModel extends Model
                 :lastName,
                 :email,
                 :gender,
-                :city,
-                :streetAddress,
-                :state,
                 :age,
+                :streetAddress,
+                :city,
+                :state,
                 :postalCode,
                 :phoneNumber
-              )');
-
-            $query->execute($data);
-            // $query->execute(['name' => $data['name'], 'email' => $data['email'], 'text' => $data['text']]);
+              )';
+            $employee = $this->db->connect()->prepare($query);
+            $employee->execute([
+                'name' => $data['name'],
+                'lastName' => $data['lastName'],
+                'email' => $data['email'],
+                'age' => $data['age'],
+                'gender' => $data['gender'],
+                'streetAddress' => $data['streetAddress'],
+                'city' => $data['city'],
+                'state' => $data['state'],
+                'postalCode' => $data['postalCode'],
+                'phoneNumber' => $data['phoneNumber']
+            ]);
         } catch (PDOException $e) {
             echo 'Error INSERT: ' . $e->getMessage();
             if ($e->errorInfo[1] == 1062) {
@@ -121,7 +130,6 @@ class EmployeesModel extends Model
         $age = $request["age"];
         $postalCode = $request["postalCode"];
         $phoneNumber = $request["phoneNumber"];
-
         try {
             $sql = "UPDATE employees SET name = :name,
                 lastName = :lastName,

@@ -36,4 +36,11 @@ class LoginModel extends Model
             return $isValidated;
         }
     }
+
+    public function logoutUser()
+    {
+        unset($_SESSION);
+        session_destroy();
+        header(("Location:" . BASE_URL));
+    }
 }

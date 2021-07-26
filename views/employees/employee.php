@@ -1,7 +1,7 @@
 <!-- TODO Employee view -->
 <?php
 session_start();
-
+$employee = $_SESSION["employee"];
 ?>
 
 <!DOCTYPE html>
@@ -47,22 +47,19 @@ session_start();
     </section> -->
 
     <main class="d-flex w-100 min-vh-50 justify-content-center align-item-center">
-        <form action="<?= BASE_URL; ?>employees/render" method="POST" class="d-flex flex-column gap-3 p-2">
+        <form action="<?= BASE_URL; ?>employees/updateEmployee" method="POST" class="d-flex flex-column gap-3 p-2">
             <div class="d-flex flex-row gap-3 p-2 newUserForm">
                 <section class="d-flex flex-column gap-3 p-2" id="formColumnOne">
+                    <div class="d-none">
+                        <input class="form-control form-control-dark w-100" name="id" type="text" placeholder="" value=<?= $employee->id; ?>>
+                    </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 h-100">
                         <h5>Name</h5>
                         <div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-users"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="name" type="text" placeholder="" value=<?php if (
-                                                                                                                                    empty($foundEmployee["name"])
-                                                                                                                                ) {
-                                                                                                                                    echo "";
-                                                                                                                                } else {
-                                                                                                                                    echo ('"' . $foundEmployee["name"] . '"');
-                                                                                                                                } ?>>
+                            <input class="form-control form-control-dark w-100" name="name" type="text" placeholder="" value=<?= $employee->name; ?>>
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -71,13 +68,7 @@ session_start();
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="email" type="text" placeholder="" value=<?php if (
-                                                                                                                                    empty($foundEmployee["email"])
-                                                                                                                                ) {
-                                                                                                                                    echo "";
-                                                                                                                                } else {
-                                                                                                                                    echo ('"' . $foundEmployee["email"] . '"');
-                                                                                                                                } ?>>
+                            <input class="form-control form-control-dark w-100" name="email" type="text" placeholder="" value=<?= $employee->email; ?>>
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -86,13 +77,7 @@ session_start();
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-city"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="city" type="text" placeholder="" value=<?php if (
-                                                                                                                                    empty($foundEmployee["city"])
-                                                                                                                                ) {
-                                                                                                                                    echo "";
-                                                                                                                                } else {
-                                                                                                                                    echo ('"' . $foundEmployee["city"] . '"');
-                                                                                                                                } ?>>
+                            <input class="form-control form-control-dark w-100" name="city" type="text" placeholder="" value=<?= $employee->city; ?>>
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -101,13 +86,7 @@ session_start();
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-flag-usa"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="state" type="text" placeholder="" value=<?php if (
-                                                                                                                                    empty($foundEmployee["state"])
-                                                                                                                                ) {
-                                                                                                                                    echo "";
-                                                                                                                                } else {
-                                                                                                                                    echo ('"' . $foundEmployee["state"] . '"');
-                                                                                                                                } ?>>
+                            <input class="form-control form-control-dark w-100" name="state" type="text" placeholder="" value=<?= $employee->state; ?>>
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -116,13 +95,7 @@ session_start();
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-mail-bulk"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="postalCode" type="text" placeholder="" value=<?php if (
-                                                                                                                                        empty($foundEmployee["postalCode"])
-                                                                                                                                    ) {
-                                                                                                                                        echo "";
-                                                                                                                                    } else {
-                                                                                                                                        echo ('"' . $foundEmployee["postalCode"] . '"');
-                                                                                                                                    } ?>>
+                            <input class="form-control form-control-dark w-100" name="postalCode" type="text" placeholder="" value=<?= $employee->postalCode; ?>>
                         </div>
                     </div>
                 </section>
@@ -133,13 +106,7 @@ session_start();
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-hand-scissors"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="LastName" type="text" placeholder="" value=<?php if (
-                                                                                                                                        empty($foundEmployee["lastName"])
-                                                                                                                                    ) {
-                                                                                                                                        echo "";
-                                                                                                                                    } else {
-                                                                                                                                        echo ('"' . $foundEmployee["lastName"] . '"');
-                                                                                                                                    } ?>>
+                            <input class="form-control form-control-dark w-100" name="lastName" type="text" placeholder="" value=<?= $employee->lastName; ?>>
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -148,28 +115,16 @@ session_start();
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-venus-mars"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="gender" type="text" placeholder="" value=<?php if (
-                                                                                                                                    empty($foundEmployee["gender"])
-                                                                                                                                ) {
-                                                                                                                                    echo "";
-                                                                                                                                } else {
-                                                                                                                                    echo ('"' . $foundEmployee["gender"] . '"');
-                                                                                                                                } ?>>
+                            <input class="form-control form-control-dark w-100" name="gender" type="text" placeholder="" value=<?= $employee->gender; ?>>
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
-                        <h5>Street: Adress</h5>
+                        <h5>Street Address</h5>
                         <div class="d-flex flex-row gap-3 pt-2 pb-2 h-100 search__component border border-secondary">
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-road"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="streetAddress" type="text" placeholder="" value=<?php if (
-                                                                                                                                            empty($foundEmployee["streetAddress"])
-                                                                                                                                        ) {
-                                                                                                                                            echo "";
-                                                                                                                                        } else {
-                                                                                                                                            echo ('"' . $foundEmployee["streetAddress"] . '"');
-                                                                                                                                        } ?>>
+                            <input class="form-control form-control-dark w-100" name="streetAddress" type="text" placeholder="" value=<?= $employee->streetAddress; ?>>
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -178,13 +133,7 @@ session_start();
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-baby-carriage"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="age" type="text" placeholder="" value=<?php if (
-                                                                                                                                empty($foundEmployee["age"])
-                                                                                                                            ) {
-                                                                                                                                echo "";
-                                                                                                                            } else {
-                                                                                                                                echo ('"' . $foundEmployee["age"] . '"');
-                                                                                                                            } ?>>
+                            <input class="form-control form-control-dark w-100" name="age" type="text" placeholder="" value=<?= $employee->age; ?>>
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-column justify-content-center pt-2 pb-2 h-100">
@@ -193,20 +142,14 @@ session_start();
                             <div class="d-flex justify-content-center align-item-center">
                                 <i class="fas fa-mobile-alt"></i>
                             </div>
-                            <input class="form-control form-control-dark w-100" name="phoneNumber" type="text" placeholder="" value=<?php if (
-                                                                                                                                        empty($foundEmployee["phoneNumber"])
-                                                                                                                                    ) {
-                                                                                                                                        echo "";
-                                                                                                                                    } else {
-                                                                                                                                        echo ('"' . $foundEmployee["phoneNumber"] . '"');
-                                                                                                                                    } ?>>
+                            <input class="form-control form-control-dark w-100" name="phoneNumber" type="text" placeholder="" value=<?= $employee->phoneNumber; ?>>
                         </div>
                     </div>
                 </section>
             </div>
             <div class="px-3">
                 <button type="submit" name="submitEmployee" class="btn btn-primary border pt-3 pb-3 text-light">Submit</button>
-                <a href="./dashboard.php">
+                <a href="<?= BASE_URL; ?>employees/render">
                     <button type="button" name="return" class="btn btn-light border pt-3 pb-3 text-dark">Return</button>
                 </a>
             </div>

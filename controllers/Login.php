@@ -18,9 +18,10 @@ class Login extends Controller
     public function login()
     {
         $user = $this->model->loginUser($_POST);
-        print_r($user);
         if (isset($_SESSION["username"])) {
             unset($_SESSION["username"]);
+            session_start();
+            $_SESSION["username"] = $user;
             header("Location:" . BASE_URL . "employees/render");
         } else {
             header("Location:" . BASE_URL . "login?message=error");
@@ -29,5 +30,6 @@ class Login extends Controller
 
     public function logout()
     {
+        $this->model->logoutUser();
     }
 }
