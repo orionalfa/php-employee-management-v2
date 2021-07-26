@@ -37,8 +37,9 @@ class Router
                 }
             }
         } else {
-            echo "Router error";
-            // error controller needed
+            // echo "Router error";
+            require_once CONTROLLERS . "/Failure.php";
+            $controller = new FailureController;
         }
     }
 }

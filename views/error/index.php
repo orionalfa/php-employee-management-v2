@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", "On");
+// error_reporting(E_ALL);
+// ini_set("display_errors", "On");
 // echo "Dashboard View(Employees)";
 session_start();
 ?>
@@ -11,7 +11,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Error</title>
 
     <!-- Script del CDN de Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -24,30 +24,15 @@ session_start();
 
     <link rel="stylesheet" href="<?= CSS ?>/main.css">
 
-    <!-- grid styles and functions -->
-    <link rel="stylesheet" href="<?php echo NODE_MODULES . "jsgrid/css/jsgrid.css"; ?>" />
-    <link rel="stylesheet" href="<?php echo NODE_MODULES . "jsgrid/css/theme.css "; ?>" />
-    <script type="text/javascript" src="<?php echo NODE_MODULES . "jsgrid/dist/jsgrid.min.js"; ?>"></script>
 </head>
 
 <body class="d-flex min-vh-100 flex-column justify-content-between align-item-between d-inline-block m-0 p-0">
 
     <?php include VIEWS . "/header.php"; ?>
     <main class="min-vh-50 h-100 d-inline-block">
-        <div class="">
-            <h1></h1>
-            <div id="employeesList"></div>
-        </div>
+        <h1><?php echo $this->message; ?></h1>
     </main>
     <?php include "assets/html/footer.html"; ?>
-    <script>
-        const baseURL = "<?php echo BASE_URL; ?>";
-    </script>
-    <script src="<?= JS ?>jsGrid.js"></script>
-
-    <!-- <script>
-        loadEmployeesList();
-    </script> -->
     <script src="<?= NODE_MODULES ?>bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
